@@ -4,15 +4,15 @@ def copy_file(command: str) -> None:
     if len(split_command) != 3 or split_command[0] != "cp":
         return
 
-    file_name = split_command[1]
-    new_file_name = split_command[2]
+    source_file_name = split_command[1]
+    destination_file_name = split_command[2]
 
-    if file_name == new_file_name:
+    if source_file_name == destination_file_name:
         return
 
     try:
-        with (open(file_name, "r") as file,
-              open(new_file_name, "w") as new_file):
-            new_file.write(file.read())
+        with (open(source_file_name, "r") as source_file,
+              open(destination_file_name, "w") as destination_file):
+            destination_file.write(source_file.read())
     except Exception:
         return
